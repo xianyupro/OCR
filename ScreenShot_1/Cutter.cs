@@ -107,6 +107,7 @@ namespace ScreenShot_1
 
         private void Cutter_MouseUp(object sender, MouseEventArgs e)
         {
+            Bitmap CatchedBmp;
             if (e.Button == MouseButtons.Left)
             {
                 // 如果截图已经开始，鼠标左键弹起设置截图完成
@@ -114,15 +115,22 @@ namespace ScreenShot_1
                 {
                     CatchStart = false;
                 }
-                if (CatchRectangle.Width < 100 || CatchRectangle.Height < 50 || CatchRectangle.Width > 900 || CatchRectangle.Height > 600)
+                if (CatchRectangle.Width < 100 && CatchRectangle.Height < 50)
                 {
-                    Form1.info = "截图太小请重新选择";
-                    massage Ma = new massage();
-                    Ma.Show();
-                    this.BackgroundImage = originUnChange;
-                    return;
+                    CatchedBmp = new Bitmap(100, 50);
                 }
-                Bitmap CatchedBmp = new Bitmap(CatchRectangle.Width, CatchRectangle.Height);
+                else if (CatchRectangle.Width < 100 && CatchRectangle.Height > 50)
+                {
+                    CatchedBmp = new Bitmap(100, CatchRectangle.Height);
+                }
+                else if(CatchRectangle.Width > 100 && CatchRectangle.Height < 50)
+                {
+                    CatchedBmp = new Bitmap(CatchRectangle.Width, 50);
+                }  
+                else
+                {
+                    CatchedBmp = new Bitmap(CatchRectangle.Width, CatchRectangle.Height);
+                }
                 Graphics g = Graphics.FromImage(CatchedBmp);
                 g.DrawImage(originBmp, new Rectangle(0, 0, CatchRectangle.Width, CatchRectangle.Height), CatchRectangle, GraphicsUnit.Pixel);
                 CatchedBmp.Save("jietu.jpg");

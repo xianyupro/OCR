@@ -159,7 +159,7 @@ namespace ScreenShot_1
                 }
                 for (int i = 0; i < sougouJson["result"].Count(); i++)
                 {
-                    OCRresult = OCRresult + sougouJson["result"][i]["content"].ToString() + "\r\n";
+                    OCRresult = OCRresult + sougouJson["result"][i]["content"].ToString(); //+ "\n";
                 }
 
                 Clipboard.SetText(OCRresult);
