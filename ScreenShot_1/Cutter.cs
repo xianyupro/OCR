@@ -134,6 +134,7 @@ namespace ScreenShot_1
                 Graphics g = Graphics.FromImage(CatchedBmp);
                 g.DrawImage(originBmp, new Rectangle(0, 0, CatchRectangle.Width, CatchRectangle.Height), CatchRectangle, GraphicsUnit.Pixel);
                 CatchedBmp.Save("jietu.jpg");
+                Clipboard.SetImage(CatchedBmp);
                 g.Dispose();
                 this.BackgroundImage = originBmp;
                 CatchedBmp.Dispose();

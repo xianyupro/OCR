@@ -36,10 +36,11 @@ namespace ScreenShot_1
         private void Form1_Load(object sender, EventArgs e)
         {
             uint ctrlHotKey = (uint)(KeyModifiers.WindowsKey | KeyModifiers.Ctrl);
+            uint ctrlHotKey1 = (uint)(KeyModifiers.Alt | KeyModifiers.Ctrl);
             //uint ctrlHotKey = (uint)(KeyModifiers.WindowsKey);
             // 注册热键为Alt+Ctrl+C, "100"为唯一标识热键
             HotKey.RegisterHotKey(Handle, 100, ctrlHotKey, Keys.A);
-            HotKey.RegisterHotKey(Handle, 200, ctrlHotKey, Keys.Z);
+            HotKey.RegisterHotKey(Handle, 200, ctrlHotKey1, Keys.A);
         }
 
         /// <summary>
@@ -67,7 +68,7 @@ namespace ScreenShot_1
                     OCR();
                     break;
                 case 200:
-                    MessageBox.Show("调用B函数");
+                    jietu();
                     break;
             }
         }
@@ -215,6 +216,21 @@ namespace ScreenShot_1
                     massage Ma = new massage();
                     Ma.Show();
                 }
+            }
+        }
+        private void jietu()
+        {
+            Bitmap CatchBmp = new Bitmap(Screen.AllScreens[0].Bounds.Width, Screen.AllScreens[0].Bounds.Height);
+            Graphics g = Graphics.FromImage(CatchBmp);
+            g.CopyFromScreen(new Point(0, 0), new Point(0, 0), new Size(Screen.AllScreens[0].Bounds.Width, Screen.AllScreens[0].Bounds.Height));
+            Cutter cutter1 = new Cutter();
+            cutter1.BackgroundImage = CatchBmp;
+            cutter1.Show();
+            if (cutter1.ShowDialog() == DialogResult.OK)
+            {
+                info = "截图已复制到剪切板";
+                massage Ma = new massage();
+                Ma.Show();   
             }
         }
 
