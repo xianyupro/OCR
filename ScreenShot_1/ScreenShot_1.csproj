@@ -43,6 +43,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -67,6 +68,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="HotKey.cs" />
+    <Compile Include="ShowTrans.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowTrans.Designer.cs">
+      <DependentUpon>ShowTrans.cs</DependentUpon>
+    </Compile>
     <Compile Include="massage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +93,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowTrans.resx">
+      <DependentUpon>ShowTrans.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="massage.resx">
       <DependentUpon>massage.cs</DependentUpon>

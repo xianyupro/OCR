@@ -27,13 +27,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_6155B0592206099F486ADA7889B43549"
+        "MsmKey" = "8:_5E187FFE793701833807425E27C5F7CA"
+        "OwnerKey" = "8:_CFF8ADB53C48C3B0CFD2191F826C1E09"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5E187FFE793701833807425E27C5F7CA"
         "OwnerKey" = "8:_555BB4B5D03649F19D851759ABDBCA6D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_99CBD0259865E190BF59FE3D0F6C8FF8"
+        "MsmKey" = "8:_721B48F224CFAE5CBAA54D7FCD3050B8"
         "OwnerKey" = "8:_555BB4B5D03649F19D851759ABDBCA6D"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -45,13 +51,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_F489CA64A2807EB38D30AFD374838B39"
-        "OwnerKey" = "8:_6155B0592206099F486ADA7889B43549"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F489CA64A2807EB38D30AFD374838B39"
+        "MsmKey" = "8:_CFF8ADB53C48C3B0CFD2191F826C1E09"
         "OwnerKey" = "8:_555BB4B5D03649F19D851759ABDBCA6D"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -64,19 +64,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_99CBD0259865E190BF59FE3D0F6C8FF8"
+        "OwnerKey" = "8:_721B48F224CFAE5CBAA54D7FCD3050B8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_6155B0592206099F486ADA7889B43549"
+        "OwnerKey" = "8:_CFF8ADB53C48C3B0CFD2191F826C1E09"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F489CA64A2807EB38D30AFD374838B39"
+        "OwnerKey" = "8:_5E187FFE793701833807425E27C5F7CA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -211,20 +211,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6155B0592206099F486ADA7889B43549"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5E187FFE793701833807425E27C5F7CA"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:AipSdk, Version=3.6.3.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_6155B0592206099F486ADA7889B43549"
+                    "_5E187FFE793701833807425E27C5F7CA"
                     {
-                    "Name" = "8:AipSdk.dll"
+                    "Name" = "8:Newtonsoft.Json.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:AipSdk.dll"
+            "SourcePath" = "8:Newtonsoft.Json.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D267984C3DB84193960754785EA0F41C"
@@ -242,14 +242,14 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_99CBD0259865E190BF59FE3D0F6C8FF8"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_721B48F224CFAE5CBAA54D7FCD3050B8"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:JsonFx, Version=2.0.1209.2802, Culture=neutral, PublicKeyToken=315052dd637f8a52, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_99CBD0259865E190BF59FE3D0F6C8FF8"
+                    "_721B48F224CFAE5CBAA54D7FCD3050B8"
                     {
                     "Name" = "8:JsonFx.dll"
                     "Attributes" = "3:512"
@@ -293,20 +293,20 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F489CA64A2807EB38D30AFD374838B39"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CFF8ADB53C48C3B0CFD2191F826C1E09"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:AipSdk, Version=3.6.3.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_F489CA64A2807EB38D30AFD374838B39"
+                    "_CFF8ADB53C48C3B0CFD2191F826C1E09"
                     {
-                    "Name" = "8:Newtonsoft.Json.dll"
+                    "Name" = "8:AipSdk.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:Newtonsoft.Json.dll"
+            "SourcePath" = "8:AipSdk.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D267984C3DB84193960754785EA0F41C"
@@ -381,14 +381,14 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SimpleOcr"
         "ProductCode" = "8:{E00DC430-D95B-48C2-AF21-631C73A6366A}"
-        "PackageCode" = "8:{E6456879-F55D-4814-94C9-5F14BB772EC6}"
+        "PackageCode" = "8:{39DCCFAF-ADE2-47CE-A16B-9FAE1FE63709}"
         "UpgradeCode" = "8:{14F00D18-C77B-46D4-86A1-D8DB14A95FDC}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.1.4"
         "Manufacturer" = "8:Microsoft"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

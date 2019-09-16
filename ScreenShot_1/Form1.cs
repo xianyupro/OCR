@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Security.Cryptography;
 
 //Install-Package ImageProcessor -Version 2.6.2.25
 //包管理
@@ -18,6 +19,7 @@ namespace ScreenShot_1
     public partial class Form1 : Form
     {
         public static string info = "";
+        private ShowTrans showTrans = null;
         public enum KeyModifiers
         {
             None = 0,
@@ -35,12 +37,15 @@ namespace ScreenShot_1
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            uint ctrlHotKey = (uint)(KeyModifiers.WindowsKey | KeyModifiers.Ctrl);
+            //uint ctrlHotKey = (uint)(KeyModifiers.WindowsKey | KeyModifiers.Ctrl);
             uint ctrlHotKey1 = (uint)(KeyModifiers.Alt | KeyModifiers.Ctrl);
+            uint ctrlHotKey2 = (uint)(KeyModifiers.Alt );
             //uint ctrlHotKey = (uint)(KeyModifiers.WindowsKey);
             // 注册热键为Alt+Ctrl+C, "100"为唯一标识热键
-            HotKey.RegisterHotKey(Handle, 100, ctrlHotKey, Keys.A);
-            HotKey.RegisterHotKey(Handle, 200, ctrlHotKey1, Keys.A);
+            HotKey.RegisterHotKey(Handle, 100, ctrlHotKey2, Keys.A);
+            //HotKey.RegisterHotKey(Handle, 200, ctrlHotKey1, Keys.A);
+            showTrans = new ShowTrans();
+            showTrans.Show();
         }
 
         /// <summary>
@@ -164,7 +169,9 @@ namespace ScreenShot_1
                 }
 
                 Clipboard.SetText(OCRresult);
-                info = "文字已复制到剪切板";
+                showTrans.textBox1.Text = Translate(OCRresult);
+                showTrans.textBox2.Text = OCRresult;
+                info = "文字已复制到剪切板"  ;
                 massage Ma = new massage();
                 Ma.Show();
             }
@@ -212,7 +219,8 @@ namespace ScreenShot_1
                 else
                 {
                     Clipboard.SetText(OCRresult);
-                    info = "文字已复制到剪切板";
+                    //Translate(OCRresult);
+                    info = "文字已复制到剪切板:"+ Translate(OCRresult);
                     massage Ma = new massage();
                     Ma.Show();
                 }
@@ -261,6 +269,81 @@ namespace ScreenShot_1
         {
             timer1.Enabled = false;
             this.Hide();
+        }
+        public static string EncryptString(string str)
+        {
+            MD5 md5 = MD5.Create();
+            // 将字符串转换成字节数组
+            byte[] byteOld = Encoding.UTF8.GetBytes(str);
+            // 调用加密方法
+            byte[] byteNew = md5.ComputeHash(byteOld);
+            // 将加密结果转换为字符串
+            StringBuilder sb = new StringBuilder();
+            foreach (byte b in byteNew)
+            {
+                // 将字节转换成16进制表示的字符串，
+                sb.Append(b.ToString("x2"));
+            }
+            // 返回加密的字符串
+            return sb.ToString();
+        }
+        public static String Translate(String qq)
+        {
+            // 原文
+            string q = qq;
+            // 源语言
+            string from = "en";
+            // 目标语言
+            string to = "zh";
+            // 改成您的APP ID
+            string appId = "20190916000334798";
+            Random rd = new Random();
+            string salt = rd.Next(100000).ToString();
+            // 改成您的密钥
+            string secretKey = "49hQrTtsBGkmHTA_S0R8";
+            string sign = EncryptString(appId + q + salt + secretKey);
+            string url = "http://api.fanyi.baidu.com/api/trans/vip/translate?";
+            url += "q=" + System.Web.HttpUtility.UrlEncode(q);
+            url += "&from=" + from;
+            url += "&to=" + to;
+            url += "&appid=" + appId;
+            url += "&salt=" + salt;
+            url += "&sign=" + sign;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "GET";
+            request.ContentType = "text/html;charset=UTF-8";
+            request.UserAgent = null;
+            request.Timeout = 6000;
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            Stream myResponseStream = response.GetResponseStream();
+            StreamReader myStreamReader = new StreamReader(myResponseStream, Encoding.GetEncoding("utf-8"));
+            string retString = myStreamReader.ReadToEnd();
+            myStreamReader.Close();
+            myResponseStream.Close();
+            return ConvertJson(retString)["trans_result"][0]["dst"].ToString();
+        }
+        public static JObject ConvertJson(string str)
+        {
+            JsonSerializer serializer = new JsonSerializer();
+            TextReader tr = new StringReader(str);
+            JsonTextReader jtr = new JsonTextReader(tr);
+            object obj = serializer.Deserialize(jtr);
+            if (obj != null)
+            {
+                StringWriter textWriter = new StringWriter();
+                JsonTextWriter jsonWriter = new JsonTextWriter(textWriter)
+                {
+                    Formatting = Formatting.Indented,
+                    Indentation = 4,
+                    IndentChar = ' '
+                };
+                serializer.Serialize(jsonWriter, obj);
+                return JsonConvert.DeserializeObject<JObject>(textWriter.ToString());
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
